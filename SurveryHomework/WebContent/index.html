@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Survey</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/app.css">
+</head>
+<body>
+    <div class="container py-4">
+        <h1>Student Survey</h1>
+        <div class="container py-4">
+	        <form>
+			  <div class="form-row">
+			    <div class="form-group col-md-6">
+			      <label for="inputEmail4">First Name</label>
+			      <input type="email" class="form-control" id="inputEmail4" required>
+			    </div>
+			    <div class="form-group col-md-6">
+			      <label for="inputPassword4">Last Name</label>
+			      <input type="password" class="form-control" id="inputPassword4" required>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputAddress">Address</label>
+			    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+			  </div>
+			  <div class="form-row">
+			    <div class="form-group col-md-6">
+			      <label for="inputCity">City</label>
+			      <input type="text" class="form-control" id="inputCity" required>
+			    </div>
+			    <div class="form-group col-md-4">
+			      <label for="inputState">State</label>
+				  <input type="text" class="form-control" id="inputState" required>
+			    </div>
+			    <div class="form-group col-md-2">
+			      <label for="inputZip">Zip</label>
+			      <input type="text" class="form-control" id="inputZip" required>
+			    </div>
+			  </div>
+			  <div class="form-row">
+				  <div class="form-group col-md-6">
+				      <label for="inputEmail4">Email</label>
+				      <input type="email" class="form-control" id="inputEmail4" required>
+				  </div>
+				  <div class="form-group col-md-6">
+				      <label for="inputPhone">Phone Number</label>
+				      <input type=tel class="form-control" id="inputPhone" required>
+				  </div>
+			  </div>
+			  <div class="form-row">
+				  <div class="form-group col-md-4">
+				      <label for="inputsurveryDate">Date of Survey</label>
+				      <input type="date" class="form-control" id="inputSurveryDate" required>
+				  </div>
+			  </div>
+			  
+			  <P> What do you like most about the campus?</p>
+			  
+			  <div class="form-group">
+			    <div class="form-check">
+			      <input class="form-check-input" type="checkbox" id="checkStudents">
+			      <label class="form-check-label" for="checkStudents">Students</label>
+			    </div>
+			    <div class="form-check">
+			      <input class="form-check-input" type="checkbox" id="checkLocation">
+			      <label class="form-check-label" for="checkLocation">Location</label>
+			    </div>
+			    <div class="form-check">
+			      <input class="form-check-input" type="checkbox" id="checkCampus">
+			      <label class="form-check-label" for="checkCampus">Campus</label>
+			    </div>
+			    <div class="form-check">
+			      <input class="form-check-input" type="checkbox" id="checkAtmosphere">
+			      <label class="form-check-label" for="checkAtmosphere">Atmosphere</label>
+			    </div>
+			    <div class="form-check">
+			      <input class="form-check-input" type="checkbox" id="checkDormrooms">
+			      <label class="form-check-label" for="checkDormrooms">Dorm rooms</label>
+			    </div>
+			    <div class="form-check">
+			      <input class="form-check-input" type="checkbox" id="checkSports">
+			      <label class="form-check-label" for="checkSports">Sports</label>
+			    </div>
+			  </div>
+			  
+			  <P> How do you become interested in the campus?</p>
+			  
+			  <div class="form-group">
+				<div class="custom-control custom-radio">
+				  <input type="radio" id="radioFriends" name="interestRadio" class="custom-control-input">
+				  <label class="custom-control-label" for="radioFriends">Friends</label>
+				</div>
+				<div class="custom-control custom-radio">
+				  <input type="radio" id="radioTelevision" name="interestRadio" class="custom-control-input">
+				  <label class="custom-control-label" for=radioTelevision>Television</label>
+				</div>
+				<div class="custom-control custom-radio">
+				  <input type="radio" id="radioInternet" name="interestRadio" class="custom-control-input">
+				  <label class="custom-control-label" for="radioInternet">Internet</label>
+				</div>
+				<div class="custom-control custom-radio">
+				  <input type="radio" id="radioOther" name="interestRadio" class="custom-control-input">
+				  <label class="custom-control-label" for="radioOther">Other</label>
+				</div>
+			  </div>
+			  
+			  <p> What's the likelihood of you recommending this school to other prospective students?</p>
+			  
+			  <div class="form-group">
+			  	<select class="custom-select">
+				  <option value="very-likely">Very Likely</option>
+				  <option value="likely">Likely</option>
+				  <option value="unlikely">Unlikely</option>
+				</select>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputRaffle">Raffle</label>
+			    <input type="range" class="form-control" id="inputRaffle" min="1" max="100" step="1">
+			  </div>
+		      <div class="form-group">
+			    <label for="additionalComment">Additional Comments</label>
+			    <textarea class="form-control" id="additionalComment" rows="3"></textarea>
+			  </div>
+				
+			  <div class="form-row">
+			    <div class="form-group col-md-6">
+				  <button type="submit" class="btn btn-success">Submit</button>
+				</div>
+				<div class="from-group ml-auto">
+				  <button type="submit" class="btn btn-danger">Cancel</button>
+				</div>
+			 </div>
+			</form>
+        </div>
+    </div>
+</body>
+</html>
