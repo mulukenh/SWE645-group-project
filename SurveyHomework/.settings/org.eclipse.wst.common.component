@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="SurveryHomework">
+        
+    <wb-module deploy-name="SurveyHomework">
+                
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="SurveryHomework"/>
-        <property name="java-output-path" value="/SurveryHomework/build/classes"/>
+                
+        <property name="java-output-path" value="/SurveyHomework/build/classes"/>
+        <property name="context-root" value="SurveyHomework"/>
+            
     </wb-module>
+    
 </project-modules>
