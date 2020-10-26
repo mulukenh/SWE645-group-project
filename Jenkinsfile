@@ -2,7 +2,7 @@ pipeline {
     agent any 
 
     environment {
-        DOCKERHUB_PASS = credentials('docker-pass')
+        DOCKERHUB_PASS = credentials('dockerhub')
     }
     stages {
         stage("Creating *.war file and building docker image") {
@@ -13,7 +13,7 @@ pipeline {
                     sh 'jar -cvf SurveyHomework.war -C WebContent/ .'
                     sh 'docker login -u mulukenh -p ${DOCKERHUB_PASS}'
                     def surveyImage = docker.build("mulukenh/surveyhomework:${BUILD_TIMESTAMP}")
-                    sh 'docker push mulukenh/surveyhomework:${BUILD_TIMESTAMP}'
+                    surveyImage.push()
                 }
             }
         }   
