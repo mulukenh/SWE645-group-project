@@ -8,14 +8,10 @@ pipeline {
                     checkout scm 
                     sh 'rm -rf *.war'
                     sh 'jar -cvf SurveyHomework.war -C SurveyHomework/WebContent/ .'
+                    def surveyImage = docker.build("mulukenh/surveyhomework")
                 }
             }
         }   
-        stage('Build docker image') {
-            steps {
-                def surveyImage = docker.build("mulukenh/surveyhomework:${env.BUILD_NUMBER}")
-            }
-        }
         stage('Test image') {
             steps {
                 surveyImage.inside {
@@ -26,7 +22,8 @@ pipeline {
         stage('Push image') {
             steps {
                 docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                    surveyImage.push()
+                    surveyImage.push("${env.BUILD_NUMBER}")
+                    surveyImage.push("latest")
                 }   
             }
         }
