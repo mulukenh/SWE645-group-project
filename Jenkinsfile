@@ -9,9 +9,6 @@ pipeline {
                     sh 'rm -rf *.war'
                     sh 'jar -cvf SurveyHomework.war -C SurveyHomework/WebContent/ .'
                     def surveyImage = docker.build("mulukenh/surveyhomework:${env.BUILD_ID}")
-                    surveyImage.inside {
-                        sh 'make test'
-                    }
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                         surveyImage.push()
                     }   
