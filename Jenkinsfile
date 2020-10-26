@@ -18,7 +18,7 @@ pipeline {
         stage("Deploying to Rancher") {
             steps {
                 script {
-                    sh 'kubectl set image deployment/surveyhomework surveyhomework=mulukenh/surveyhomework:${BUILD_ID} -n survey-hw-ns'
+                    sh 'kubectl set image deployment/survey-homework survey-homework=mulukenh/surveyhomework:${BUILD_ID} -n survey-hw-ns'
                 }
             }    
         }         
