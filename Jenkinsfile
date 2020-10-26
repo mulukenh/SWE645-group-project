@@ -10,7 +10,7 @@ pipeline {
                 script {
                     checkout scm 
                     sh 'rm -rf *.war'
-                    sh 'jar -cvf SurveyHomework.war -C WebContent/ .'
+                    sh 'jar -cvf SurveyHomework.war -C SurveyHomework/WebContent/ .'
                     sh 'docker login -u mulukenh -p ${DOCKERHUB_PASS}'
                     def surveyImage = docker.build("mulukenh/surveyhomework:${BUILD_TIMESTAMP}")
                     surveyImage.push()
