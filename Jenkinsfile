@@ -17,8 +17,10 @@ pipeline {
         }   
         stage("Deploying to Rancher") {
             steps {
-                echo 'Deploying to rancher'
-            }        
+                script {
+                    sh 'kubectl set image deployment/surveyhomework surveyhomework=mulukenh/surveyhomework:${BUILD_ID} -n jenkins-pipeline'
+                }
+            }    
         }         
     }
 }
