@@ -1,9 +1,6 @@
 pipeline {
     agent any 
 
-    environment {
-        DOCKERHUB_PASS = credentials('dockerhub')
-    }
     stages {
         stage("Creating *.war file and building docker image") {
             steps {
@@ -11,12 +8,28 @@ pipeline {
                     checkout scm 
                     sh 'rm -rf *.war'
                     sh 'jar -cvf SurveyHomework.war -C SurveyHomework/WebContent/ .'
-                    sh 'sudo docker login -u mulukenh -p ${DOCKERHUB_PASS}'
-                    def surveyImage = docker.build("mulukenh/surveyhomework:${BUILD_TIMESTAMP}")
-                    surveyImage.push()
                 }
             }
         }   
+        stage('Build docker image') {
+            steps {
+                def surveyImage = docker.build("mulukenh/surveyhomework:${env.BUILD_NUMBER}")
+            }
+        }
+        stage('Test image') {
+            steps {
+                surveyImage.inside {
+                    sh 'make test'
+                }
+            }
+        }
+        stage('Push image') {
+            steps {
+                docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                    surveyImage.push()
+                }   
+            }
+        }
         stage("Deploying to Rancher") {
             steps {
                 echo 'Deploying to rancher'
