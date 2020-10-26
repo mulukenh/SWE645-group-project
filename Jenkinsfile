@@ -8,23 +8,28 @@ pipeline {
                     checkout scm 
                     sh 'rm -rf *.war'
                     sh 'jar -cvf SurveyHomework.war -C SurveyHomework/WebContent/ .'
-                    def surveyImage = docker.build("mulukenh/surveyhomework")
+                    def surveyImage = docker.build("mulukenh/surveyhomework:${env.BUILD_NUMBER}")
                 }
             }
         }   
         stage('Test image') {
             steps {
-                surveyImage.inside {
-                    sh 'make test'
+                script {
+                    surveyImage.inside {
+                        sh 'make test'
+                    }              
                 }
             }
         }
         stage('Push image') {
             steps {
-                docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                    surveyImage.push("${env.BUILD_NUMBER}")
-                    surveyImage.push("latest")
-                }   
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        surveyImage.push()
+                        surveyImage.push
+                    }                       
+                }
+
             }
         }
         stage("Deploying to Rancher") {
